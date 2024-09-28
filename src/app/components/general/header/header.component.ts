@@ -61,15 +61,12 @@ export class HeaderComponent implements OnInit {
   }
 
   downloadCV(){
-    this.languageService.translateService.get("Header.cvName").subscribe(val => {
-      this.cvName = val
-      console.log(val)
+
       // app url
       let url = window.location.href;
 
       // Open a new window with the CV
-      window.open(url + "/../assets/cv/" + this.cvName, "_blank");
-    })
+      window.open(url + "/../assets/cv/KalabRedaResume.docx");
 
   }
 

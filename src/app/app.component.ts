@@ -30,8 +30,8 @@ export class AppComponent implements OnInit{
     this.titleService.setTitle( "Kalab Reda | Frontend Developer" );
 
     this.metaService.addTags([
-      {name: 'keywords', content: 'Frontend, software, developer'},
-      {name: 'description', content: 'Con 4 años de experiencia desarrollando sistemas, interfaces, bots y soluciones tecnológicas  para hacer de la web un lugar mejor. En mi trabajo me gusta liderar, proponer y ejecutar ideas, escribir y refactorizar código limpio, reutilizable y escalable.'},
+      {name: 'keywords', content: 'Frontend, backend, software, developer'},
+      {name: 'description', content: 'A software engineer with over 6 years of experience with Java and Angular'},
     ]);
 
 

@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BannerComponent } from './banner/banner.component';
 import { ContactComponent } from './contact/contact.component';
 import { JobsComponent } from './jobs/jobs.component';
@@ -32,6 +33,8 @@ export function HttpLoaderFactory(http: HttpClient){
   imports: [
     CommonModule,
     NgbNavModule,
+    FormsModule,
+    ReactiveFormsModule,
     CarouselModule,
     TranslateModule.forChild({
       loader: {
