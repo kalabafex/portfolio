@@ -18,6 +18,8 @@ import {
   TranslateService,
 } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NotifierModule} from 'angular-notifier';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -33,9 +35,10 @@ export function HttpLoaderFactory(http: HttpClient) {
 
     HomeModule,
     GeneralModule,
-
+    NgxSpinnerModule,
     // AnimateOnScrollModule.forRoot(),
     BrowserModule,
+    NotifierModule,
     AppRoutingModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

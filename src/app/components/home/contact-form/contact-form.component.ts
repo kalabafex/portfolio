@@ -1,6 +1,8 @@
 import { ImplicitReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { NotifierService } from 'angular-notifier';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
@@ -10,7 +12,11 @@ import { ContactService } from 'src/app/services/contact.service';
 })
 export class ContactFormComponent implements OnInit {
   FormData: FormGroup;
-  constructor(private builder: FormBuilder, private contact: ContactService) { }
+  private notifier: NotifierService;
+  private phoneRegex = /^\+?([0-9]{1,3})?[-. ]?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  constructor(private builder: FormBuilder, private contactService: ContactService, private spinner: NgxSpinnerService,  notifier: NotifierService) {
+    this.notifier = notifier;
+  }
   ngOnInit() {
     this.FormData = this.builder.group({
       Title: new FormControl('', [Validators.required]),
@@ -18,25 +24,25 @@ export class ContactFormComponent implements OnInit {
       Email: new FormControl('', [Validators.compose([Validators.required, Validators.email])]),
       GuestName: new FormControl('', [Validators.required]),
       Phone: new FormControl('', [
-        Validators.pattern('^[0-9]{10}$')
+        Validators.pattern(this.phoneRegex)
       ])
 
     });
   }
 
   onSubmit(formValue) {
+    this.spinner.show();
+    this.contactService.PostMessage(formValue).subscribe(
+      (response) => {
 
-    console.log("Form submitted!");
-    console.log("Submitted data:", formValue);
-    this.contact.PostMessage(formValue);
-    // this.contact.PostMessage(formValue)
-    //   .subscribe(response => {
-    //     location.href = 'https://mailthis.to/confirm';
-    //     console.log(response);
-    //   }, error => {
-    //     console.warn(error.responseText);
-    //     console.log({ error });
-    //   });
+        this.spinner.hide();
+        this.notifier.notify('success', JSON.parse(response.body).message);
+        console.log(JSON.parse(response.body).message);
+      },
+      (error) => {
+        this.notifier.notify('error', error.error);
+        this.spinner.hide()
+      });
     this.FormData.reset();
   }
 }

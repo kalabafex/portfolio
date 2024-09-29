@@ -5,12 +5,13 @@
     (ngSubmit)="onSubmit(FormData.value)"
   >
     <div class="form-group">
+      <label for="Title" required>Title</label>
       <input
         type="text"
         required
         class="form-control"
         name="Title"
-        placeholder="Title"
+        placeholder="Title *"
         formControlName="Title"
       />
     </div>
@@ -20,7 +21,7 @@
         class="form-control"
         name="Message"
         minLength="5"
-        placeholder="Message"
+        placeholder="Message *"
         formControlName="Message"
       >
       </textarea>
@@ -31,7 +32,7 @@
         class="form-control"
         name="Email"
         aria-describedby="emailHelp"
-        placeholder="Email"
+        placeholder="Email *"
         formControlName="Email"
       />
     </div>
@@ -40,7 +41,7 @@
         type="text"
         class="form-control"
         name="GuestName"
-        placeholder="Guest Name"
+        placeholder="Guest Name *"
         formControlName="GuestName"
       />
     </div>
@@ -59,4 +60,5 @@
       Submit
     </button>
   </form>
+  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
 </div>
