@@ -33,8 +33,6 @@ export class AppComponent implements OnInit{
       {name: 'keywords', content: 'Frontend, backend, software, developer'},
       {name: 'description', content: 'A software engineer with over 6 years of experience with Java and Angular'},
     ]);
-
-
     AOS.init();
   }
 }

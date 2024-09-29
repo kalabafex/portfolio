@@ -13,6 +13,7 @@ import { ProyectsComponent } from './proyects/proyects.component';
 import { NgbModule, NgbNav, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -29,6 +30,7 @@ export function HttpLoaderFactory(http: HttpClient){
     ProyectsComponent,
     MoreProyectsComponent,
     ContactComponent,
+    ContactFormComponent
   ],
   imports: [
     CommonModule,

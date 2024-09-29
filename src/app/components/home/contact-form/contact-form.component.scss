@@ -1,0 +1,24 @@
+@import "./../../../../variables.scss";
+
+.wrapper-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  background-color: black;
+  border-radius: 4px;
+  border-color: $Green;
+  color: white;
+}
+button:hover {
+  background-color: black;
+  border-radius: 4px;
+  border-color: $Green;
+    color: white;
+}
+
+.contacts{
+  width: 100%;
+}
+
